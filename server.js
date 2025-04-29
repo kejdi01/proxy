@@ -47,7 +47,7 @@ app.post("/webhook", async (req, res) => {
         },
       }
     );
-    res.set("Content-Type", "application/json");
+    res.set("Content-Type", "text/plain");
     res.status(response.status).json(response.data);
   } catch (error) {
     console.error("❌ Error forwarding POST request:", error.message);
