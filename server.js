@@ -35,11 +35,13 @@ app.post("/webhook", async (req, res) => {
       `${NGROK_URL}/api/integrations/webhook/`,
       req.body,
       {
+        params: req.query,
         headers: {
           "ngrok-skip-browser-warning": "true",
         },
       }
     );
+    res.set("Content-Type", "text/plain");
     res.status(response.status).json(response.data);
   } catch (error) {
     console.error("Error forwarding POST request:", error.message);
