@@ -48,7 +48,7 @@ app.post("/webhook", async (req, res) => {
       }
     );
     res.set("Content-Type", "text/plain");
-    res.status(response.status).json(response.data);
+    res.status(response.status).send(response.data); // 👈 FIXED
   } catch (error) {
     console.error("❌ Error forwarding POST request:", error.message);
     if (error.response) {
@@ -57,6 +57,7 @@ app.post("/webhook", async (req, res) => {
     res.status(500).send("Internal Server Error");
   }
 });
+
 
 // Health check route
 app.get("/health", (req, res) => {
