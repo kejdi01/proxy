@@ -38,7 +38,7 @@ app.get("/webhook", async (req, res) => {
 app.post("/webhook", async (req, res) => {
   try {
     const response = await axios.post(
-      `${NGROK_URL}/api/integrations/webhook/`,
+      `${NGROK_URL}/api/integrations/microsoft-webhook/`,
       req.body,
       {
         params: req.query,
