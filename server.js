@@ -17,7 +17,7 @@ app.use(express.json()); // Correctly use JSON middleware
 // GET webhook route
 app.get("/webhook", async (req, res) => {
   try {
-    const response = await axios.get(`${NGROK_URL}/api/integrations/webhook/`, {
+    const response = await axios.get(`${NGROK_URL}/api/integrations/microsoft-webhook/`, {
       params: req.query,
       headers: {
         "ngrok-skip-browser-warning": "true",
@@ -57,7 +57,6 @@ app.post("/webhook", async (req, res) => {
     res.status(500).send("Internal Server Error");
   }
 });
-
 
 // Health check route
 app.get("/health", (req, res) => {
