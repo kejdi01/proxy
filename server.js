@@ -17,12 +17,15 @@ app.use(express.json()); // Correctly use JSON middleware
 // GET webhook route
 app.get("/webhook", async (req, res) => {
   try {
-    const response = await axios.get(`${NGROK_URL}/api/integrations/microsoft-webhook/`, {
-      params: req.query,
-      headers: {
-        "ngrok-skip-browser-warning": "true",
-      },
-    });
+    const response = await axios.get(
+      `${NGROK_URL}/api/integrations/microsoft-webhook/`,
+      {
+        params: req.query,
+        headers: {
+          "ngrok-skip-browser-warning": "true",
+        },
+      }
+    );
     res.set("Content-Type", "text/plain");
     res.status(response.status).send(response.data);
   } catch (error) {
@@ -38,7 +41,7 @@ app.get("/webhook", async (req, res) => {
 app.post("/webhook", async (req, res) => {
   try {
     const response = await axios.post(
-      `${NGROK_URL}/api/integrations/microsoft-webhook/`,
+      `https://api.schedise.com/api/integrations/microsoft-webhook/`,
       req.body,
       {
         params: req.query,
